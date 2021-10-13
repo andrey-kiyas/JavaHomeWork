@@ -23,11 +23,11 @@ public class Calculator {
         String symbol; // + - * /
         int result;
 
-        System.out.println("Введите целое число: ");
+        System.out.println("Введите первое целое число: ");
         x = scan.nextInt();
         System.out.println("Введите знак уравнения (+ - * /): ");
         symbol = scan.next(); // + - * /
-        System.out.println("Введите целое число: ");
+        System.out.println("Введите второе целое число: ");
         y = scan.nextInt();
 
         switch (symbol) {
