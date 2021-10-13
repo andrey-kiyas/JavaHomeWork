@@ -10,6 +10,7 @@ import java.util.Scanner;
 Вывести на экран сообщение с подходящим промежутком.
 Если введенное число не попадает в один из имеющихся промежутков, то вывести соответствующее сообщение.
 */
+
 public class Interval {
     public static void main(String[] args) {
 
