@@ -51,6 +51,8 @@ public class Calculator {
                     System.out.println("Результат уравнения: " + result);
                 }
                 break;
+            default:
+                System.out.println("Неверно введен знак уравнения");
         }
     }
 }
