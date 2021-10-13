@@ -20,9 +20,8 @@ public class Calculator {
         Scanner scan = new Scanner(System.in);
         int x;
         int y;
-        String symbol;
+        String symbol; // + - * /
         int result;
-        //String sign = '+'; // + - * /
 
         System.out.println("Введите целое число: ");
         x = scan.nextInt();
