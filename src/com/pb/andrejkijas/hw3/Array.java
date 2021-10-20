@@ -28,8 +28,7 @@ public class Array {
         // Заполнение массива случайными числами в заданном диапазоне
         for (int i = 0; i < array.length; i++) {
             //int rand = min + (int)(Math.random() * ((max - min) + 1));
-            int rand = min + random.nextInt(max - min + 1);
-            array[i] = rand;
+            array[i] = min + random.nextInt(max - min + 1);
         }
 
         // Вывод массива на экран (вид массива)
