@@ -33,7 +33,7 @@ public class Bingo {
         // Играем с проверкой на ввод "эксита"
         for (; ;){
             counter++;
-            // Проверяем введен текст или число
+            // Работа с числами - тело игры
             if (scan.hasNextInt()) {
                 x = scan.nextInt();
                 if (x > r){
@@ -44,6 +44,8 @@ public class Bingo {
                     System.out.println("Верный ответ угадан! Это была попытка номер: " + counter + ".");
                     break;
                 }
+
+            // Работа с текстом - ввод "exit"
             } else if (scan.hasNextLine()) {
                 if (scan.hasNext("exit")) {
                     System.out.println("Вы ввели \"exit\", игра окончена!");
