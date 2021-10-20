@@ -1,6 +1,7 @@
 package com.pb.andrejkijas.hw3;
 
 import java.util.Arrays;
+import java.util.Random;
 
 /*
 Создайте класс Array в пакете hw3.
@@ -20,12 +21,14 @@ public class Array {
         int[] array = new int[10];
 
         // Задаем диапазон для "рандома" (от -20 до 20)
-        int a = -20;
-        int b = 20;
+        int min = -20;
+        int max = 20;
+        Random random = new Random();
 
         // Заполнение массива случайными числами в заданном диапазоне
         for (int i = 0; i < array.length; i++) {
-            int rand = a + (int)(Math.random() * ((b - a) + 1));
+            //int rand = min + (int)(Math.random() * ((max - min) + 1));
+            int rand = min + random.nextInt(max - min + 1);
             array[i] = rand;
         }
 
