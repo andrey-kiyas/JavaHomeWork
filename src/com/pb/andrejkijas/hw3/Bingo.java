@@ -15,17 +15,22 @@ import java.util.Scanner;
 
 public class Bingo {
     public static void main(String[] args) {
+
+        // Объявление переменных
         Scanner scan = new Scanner(System.in);
         int counter = 0;
         int x = 0;
         Random random = new Random();
-        int r = random.nextInt(101);    // загадываем число от 0 до 100
+
+        // загадываем число от 0 до 100
+        int r = random.nextInt(101);
 
         System.out.println("Угадайте задуманное мною число от нуля до ста.");
         System.out.println("Для выхода из программы введите - \"exit\".");
 
         //System.out.println(r); // Раскомментить на случай если нужно знать загаданное число
 
+        // Играем с проверкой на ввод "эксита"
         for (; ;){
             counter++;
             // Проверяем введен текст или число
