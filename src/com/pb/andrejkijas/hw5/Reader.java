@@ -15,4 +15,12 @@ public class Reader {
         this.readerDatBirth = "04-04-1985";
         this.readerNumPhone = "+380501234567";
     }
+
+    public Reader(String readerFIO) {
+        this.readerFIO = readerFIO;
+    }
+
+    public String getReaderFIO() {
+        return readerFIO;
+    }
 }
