@@ -1,36 +1,36 @@
 package com.pb.andrejkijas.hw6;
 
+/**
+ * Класс Animal содержит переменные food, location
+ * и методы makeNoise, eat, sleep.
+ * Метод sleep, например, может выводить на консоль "Такое-то животное спит".
+ */
 public class Animal {
+    private String food;
+    private String location;
 
-    private String animalKind; // вид животного
-    private String animalName; // имя животного
-    private String food;       // еда
-    private String location;   // местонахождение
-
-
-    public Animal(String animalKind, String animalName) {
-        this.animalKind = animalKind;
-        this.animalName = animalName;
+    public Animal(String food, String location) {
+        this.food = food;
+        this.location = location;
     }
 
-    public String getAnimalKind() {
-        return animalKind;
+    public String getFood() {
+        return food;
     }
 
-    public void setAnimalKind(String animalKind) {
-        this.animalKind = animalKind;
-    }
-
-    public String getAnimalName() {
-        return animalName;
-    }
-
-    public void setAnimalName(String animalName) {
-        this.animalName = animalName;
+    public String getLocation() {
+        return location;
     }
 
     public void makeNoise() {
-        System.out.println(animalKind + " " + animalName + " издает звуки");
-        //System.out.println(animalKind + " издает звуки");
+        System.out.println("Животное издает звуки");
+    }
+
+    public void sleep() {
+        System.out.println("Животное спит...");
+    }
+
+    public void eat() {
+        System.out.println("Животное ест...");
     }
 }
