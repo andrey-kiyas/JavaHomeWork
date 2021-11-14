@@ -5,10 +5,10 @@ package com.pb.andrejkijas.hw7;
  * **/
 
 public abstract class Clothes {
-    private final String nameClothing; // далее по коду нужно, но нет в условии
-    private final ClothesSize sizeClothing;
-    private final int priceClothing;
-    private final String colorClothing;
+    final String nameClothing; // далее по коду нужно, но нет в условии
+    final ClothesSize sizeClothing;
+    final int priceClothing;
+    final String colorClothing;
 
     protected Clothes(String nameClothing, ClothesSize sizeClothing, int priceClothing, String colorClothing) {
         this.nameClothing = nameClothing;
