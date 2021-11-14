@@ -20,7 +20,7 @@ public enum ClothesSize {
 
     private final String description;
 
-    ClothingSize(int euroSize, String description) { // private
+    ClothesSize(int euroSize, String description) { // private
         this.euroSize = euroSize;
         this.description = description;
     }

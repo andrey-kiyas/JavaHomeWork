@@ -5,8 +5,8 @@ package com.pb.andrejkijas.hw7;
  * - Tie (галстук) реализует интерфейс ManClothes
  * **/
 
-public abstract class Tie extends Clothes implements ManClothes {
-    protected Tie(String nameClothing, ClothesSize sizeClothing, int priceClothing, String colorClothing) {
-        super("галстук", sizeClothing, priceClothing, colorClothing);
+public class Tie extends Clothes implements ManClothes {
+    Tie(String nameClothing, ClothesSize sizeClothing, int priceClothing, String colorClothing) {
+        super(nameClothing, sizeClothing, priceClothing, colorClothing);
     }
 }

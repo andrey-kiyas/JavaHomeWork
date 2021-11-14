@@ -5,8 +5,8 @@ package com.pb.andrejkijas.hw7;
  * - Tshirt (футболка) реализует интерфейсы ManClothes и WomenClothes
  * **/
 
-public abstract class Tshirt extends Clothes implements ManClothes, WomenClothes {
+public class Tshirt extends Clothes implements ManClothes, WomenClothes {
     protected Tshirt(String nameClothing, ClothesSize sizeClothing, int priceClothing, String colorClothing) {
-        super("футболка", sizeClothing, priceClothing, colorClothing);
+        super(nameClothing, sizeClothing, priceClothing, colorClothing);
     }
 }

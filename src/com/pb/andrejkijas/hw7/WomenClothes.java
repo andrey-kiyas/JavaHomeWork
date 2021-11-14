@@ -6,16 +6,14 @@ package com.pb.andrejkijas.hw7;
  * Этот метод не принимают параметров, а только выводят информацию о одежде (название, размер, цену, цвет).
  * **/
 
-interface WomenClothes extends Clothes {
-    default WomenClothes(String nameClothing, ClothesSize sizeClothing, int priceClothing, String colorClothing) {
-        super(nameClothing, sizeClothing, priceClothing, colorClothing);
-    }
+interface WomenClothes {
 
-    public String dressWomen(){
-        return "Женщина одела" +
-                ": одежда - "  + getNameClothing() +
-                "; размер - "  + getSizeClothing() +
-                "; цена - "    + getPriceClothing() +
-                "; цвет - "    + getColorClothing();
+    default void dressWomen() {
+
     }
+//        System.out.println("Женщина одела" +
+//                ": одежда - "  + getNameClothing() +
+//                "; размер - "  + getSizeClothing() +
+//                "; цена - "    + getPriceClothing() +
+//                "; цвет - "    + getColorClothing());
 }
