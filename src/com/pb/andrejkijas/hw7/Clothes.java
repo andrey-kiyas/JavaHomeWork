@@ -5,31 +5,40 @@ package com.pb.andrejkijas.hw7;
  * **/
 
 public abstract class Clothes {
-    final String nameClothing; // далее по коду нужно, но нет в условии
-    final ClothesSize sizeClothing;
-    final int priceClothing;
-    final String colorClothing;
+    private ClothesSize size;
+    private int price;
+    private Color color;
 
-    protected Clothes(String nameClothing, ClothesSize sizeClothing, int priceClothing, String colorClothing) {
-        this.nameClothing = nameClothing;
-        this.sizeClothing = sizeClothing;
-        this.priceClothing = priceClothing;
-        this.colorClothing = colorClothing;
+    public ClothesSize getSize() {
+        return size;
     }
 
-    public String getNameClothing() {
-        return nameClothing;
+    public void setSize(ClothesSize size) {
+        this.size = size;
     }
 
-    public ClothesSize getSizeClothing() {
-        return sizeClothing;
+    public int getPrice() {
+        return price;
     }
 
-    public int getPriceClothing() {
-        return priceClothing;
+    public void setPrice(int price) {
+        this.price = price;
     }
 
-    public String getColorClothing() {
-        return colorClothing;
+    public Color getColor() {
+        return color;
+    }
+
+    public void setColor(Color color) {
+        this.color = color;
+    }
+
+    @Override
+    public String toString() {
+        return "{" +
+                "размер = " + size +
+                ", цена = " + price +
+                ", цвет = " + color +
+                '}';
     }
 }

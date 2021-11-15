@@ -10,18 +10,26 @@ package com.pb.andrejkijas.hw7;
 **/
 
 public enum ClothesSize {
-    XXS(32, "Детский размер"), // Не нашел в инете этот размер, но следую задаче
-    XS(34, "Взрослый размер"),
-    S(36, "Взрослый размер"),
-    M(38, "Взрослый размер"),
-    L(40, "Взрослый размер");
+    XXS("Детский размер", 32),
+    XS("Взрослый размер", 34),
+    S("Взрослый размер", 36),
+    M("Взрослый размер", 38),
+    L("Взрослый размер", 40);
+    String description;
+    int euroSize;
 
-    private final int euroSize;
 
-    private final String description;
-
-    ClothesSize(int euroSize, String description) { // private
-        this.euroSize = euroSize;
+    ClothesSize(String description, int euroSize) {
         this.description = description;
+        this.euroSize = euroSize;
     }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public int getEuroSize() {
+        return euroSize;
+    }
+
 }

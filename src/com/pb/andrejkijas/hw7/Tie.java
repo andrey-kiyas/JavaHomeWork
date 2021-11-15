@@ -5,17 +5,31 @@ package com.pb.andrejkijas.hw7;
  * - Tie (галстук) реализует интерфейс ManClothes
  * **/
 
-public class Tie extends Clothes implements ManClothes {
-    Tie(String nameClothing, ClothesSize sizeClothing, int priceClothing, String colorClothing) {
-        super(nameClothing, sizeClothing, priceClothing, colorClothing);
+public class Tie extends Clothes implements ManClothes{
+
+    public Tie() {
+        super();
+    }
+
+    public Tie(Color color, int price) {
+        setColor(color);
+        setPrice(price);
+    }
+
+    @Override
+    public void dressMan() {
+        StringBuilder info = new StringBuilder("Мужская одежда: ");
+        info.append(getSize()).append(", ");
+        info.append(getColor()).append(", ");
+        info.append(getPrice()).append(".");
+        System.out.println(info);
     }
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder(nameClothing);
-        sb.append(" (размер - ").append(sizeClothing);
-        sb.append(", цена - ").append(priceClothing).append(" грн.");
-        sb.append(", цвет - ").append(colorClothing).append(")");
-        return sb.toString();
+        return "Галстук {"  +
+                "цена = "   + getPrice() +
+                ", цвет = " + getColor() +
+                '}';
     }
 }
