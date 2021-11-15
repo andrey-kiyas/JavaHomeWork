@@ -29,10 +29,10 @@ public class Skirt extends Clothes implements WomenClothes{
     @Override
     public String toString() {
         //return getClass().getSimpleName() + ": " + super.toString();
-        return "Юбка {" +
+        return "Юбка (" +
                 "размер = " + getSize() +
                 ", цена = "   + getPrice() +
                 ", цвет = " + getColor() +
-                '}';
+                ')';
     }
 }

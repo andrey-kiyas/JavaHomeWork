@@ -38,11 +38,11 @@ public class Pants extends Clothes implements ManClothes,WomenClothes{
     @Override
     public String toString() {
         //return getClass().getSimpleName() + ": " + super.toString();
-        return "Штаны {" +
+        return "Штаны (" +
                 "размер = " + getSize() +
                 ", цена = "   + getPrice() +
                 ", цвет = " + getColor() +
-                '}';
+                ')';
     }
 
 

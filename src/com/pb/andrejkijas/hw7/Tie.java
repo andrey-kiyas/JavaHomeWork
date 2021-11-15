@@ -27,9 +27,9 @@ public class Tie extends Clothes implements ManClothes{
 
     @Override
     public String toString() {
-        return "Галстук {"  +
+        return "Галстук ("  +
                 "цена = "   + getPrice() +
                 ", цвет = " + getColor() +
-                '}';
+                ')';
     }
 }

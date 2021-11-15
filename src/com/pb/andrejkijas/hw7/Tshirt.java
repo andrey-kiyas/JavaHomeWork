@@ -38,10 +38,10 @@ public class Tshirt extends Clothes implements ManClothes,WomenClothes{
     @Override
     public String toString() {
         //return getClass().getSimpleName() + ": " + super.toString();
-        return "Футболка {" +
+        return "Футболка (" +
                 "размер = " + getSize() +
                 ", цена = "   + getPrice() +
                 ", цвет = " + getColor() +
-                '}';
+                ')';
     }
 }
