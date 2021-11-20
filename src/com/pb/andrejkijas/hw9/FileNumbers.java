@@ -23,7 +23,7 @@ import java.util.Random;
 
 public class FileNumbers {
     public static void main(String[] args) throws Exception{
-        //createNumbersFile();
+        createNumbersFile();
         createOddNumbersFile();
     }
 
