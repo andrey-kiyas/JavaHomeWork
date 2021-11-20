@@ -23,8 +23,14 @@ import java.util.Random;
 
 public class FileNumbers {
     public static void main(String[] args) throws Exception{
+        System.out.println("--------------------------------------------------");
         createNumbersFile();
+        System.out.println("--------------------------------------------------");
+        printCreatedFile();
+        System.out.println("--------------------------------------------------");
+        System.out.println("Тута будит - createOddNumbersFile()");
         createOddNumbersFile();
+        System.out.println("--------------------------------------------------");
     }
 
     private static void createNumbersFile(){
@@ -51,15 +57,19 @@ public class FileNumbers {
         System.out.println("Данные созданы и записаны в файл \"numbers.txt\"");
     }
 
-    private static void createOddNumbersFile(){
+    private static void printCreatedFile(){
         char[] arrayR = new char[1000];
         try (Reader reader = new FileReader("files09/numbers.txt")) {
             reader.read(arrayR);
-            System.out.println("\nДанные файла");
+            System.out.println("Данные файла");
             System.out.println(arrayR);
         } catch(Exception e) {
             //e.printStackTrace();
             System.out.println("Файл не найден");
         }
+    }
+
+    private static void createOddNumbersFile(){
+        // Надо как-то вычитать файл и подставить вместо четных значений нолики
     }
 }
