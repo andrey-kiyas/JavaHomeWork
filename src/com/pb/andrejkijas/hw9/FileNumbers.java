@@ -23,7 +23,7 @@ import java.util.Random;
 
 public class FileNumbers {
     public static void main(String[] args) throws Exception{
-        createNumbersFile();
+        //createNumbersFile();
         createOddNumbersFile();
     }
 
@@ -58,7 +58,7 @@ public class FileNumbers {
             System.out.println("\nДанные файла");
             System.out.println(arrayR);
         } catch(Exception e) {
-            e.printStackTrace();
+            //e.printStackTrace();
             System.out.println("Файл не найден");
         }
     }
