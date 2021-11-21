@@ -1,10 +1,17 @@
 package com.pb.andrejkijas.hw9;
 
-import java.io.FileReader;
+import java.io.FileInputStream;
 import java.io.FileWriter;
-import java.io.Reader;
+import java.io.InputStream;
 import java.io.Writer;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.List;
 import java.util.Random;
+
+//import java.nio.file.Paths;
 
 /**
  * В пакете hw9 создать класс FileNumbers.
@@ -23,6 +30,8 @@ import java.util.Random;
 
 public class FileNumbers {
     public static void main(String[] args) throws Exception{
+
+
         System.out.println("--------------------------------------------------");
         createNumbersFile();
         System.out.println("--------------------------------------------------");
@@ -31,24 +40,82 @@ public class FileNumbers {
         System.out.println("Тута будит - createOddNumbersFile()");
         createOddNumbersFile();
         System.out.println("--------------------------------------------------");
+
+
+
+
+
+
+        Path path = Paths.get("files09/numbers.txt");
+        // чтение всех строк файла
+        List<String> lines = Files.readAllLines(path, StandardCharsets.UTF_8);
+        for (String s: lines) {
+            System.out.println(s);
+        }
+
+
+
+
+
+//        Path path = Paths.get("files09/numbers.txt");
+//
+//        try (Scanner scan = new Scanner(path)) {
+//            int[] arrayC = new int[100];
+//            int in;
+//
+//            String str = scan.nextLine();
+//
+//            while (true) {
+//                in = Integer.parseInt(str);
+//                if (in % 2 == 0){
+//                    in = 0;
+//                }
+//                String b = String.valueOf(in);
+//
+//
+//                System.out.println(b);
+//            }
+//
+//
+//        } catch (NoSuchElementException ex) {
+//            System.out.println("Файл прочитан");
+//        } catch (IOException ex) {
+////            ex.printStackTrace();
+//            System.out.println("Файл не найден");
+//        }
+
+
+
+
+
+
     }
 
+
+
+
+
+
+
+
+
+
     private static void createNumbersFile(){
-        int[] arrayRW = new int[100];
+        int[] arrayR = new int[100];
         Random random = new Random();
-        for (int i = 0; i < arrayRW.length; i++) {
-            arrayRW[i] = 0 + random.nextInt(99 - 0 + 1);
+        for (int i = 0; i < arrayR.length; i++) {
+            arrayR[i] = 0 + random.nextInt(99 - 0 + 1);
         }
         try (Writer writer = new FileWriter("files09/numbers.txt")) {
-            for (int j = 0; j <= arrayRW.length+1; j++) {
+            for (int j = 0; j <= arrayR.length+1; j++) {
                 if ((j) % 10 == 0) {
                     if(j == 0){
-                        writer.write(arrayRW[j] + " ");
+                        writer.write(arrayR[j] + " ");
                     } else {
-                        writer.write(arrayRW[j] + " \n");
+                        writer.write(arrayR[j] + " \n");
                     }
                 } else {
-                    writer.write(arrayRW[j] + " ");
+                    writer.write(arrayR[j] + " ");
                 }
             }
         } catch (Exception e) {
@@ -58,14 +125,21 @@ public class FileNumbers {
     }
 
     private static void printCreatedFile(){
-        char[] arrayR = new char[1000];
-        try (Reader reader = new FileReader("files09/numbers.txt")) {
-            reader.read(arrayR);
-            System.out.println("Данные файла");
-            System.out.println(arrayR);
-        } catch(Exception e) {
-            //e.printStackTrace();
-            System.out.println("Файл не найден");
+        try (InputStream is = new FileInputStream("files09/numbers.txt")) {
+            System.out.println("Так выглядит файл \"numbers.txt\" изнутри:\n");
+            int available = is.available();
+            byte[] arrayR = new byte[available];
+            int i = 0;
+            int data = is.read();
+            while (data != -1) {
+            arrayR[i] = (byte) data;
+            data = is.read();
+            i++;
+            }
+        System.out.println(new String(arrayR));
+        } catch (Exception ex) {
+        //ex.printStackTrace();
+        System.out.println("Файл не найден");
         }
     }
 
