@@ -1,17 +1,8 @@
 package com.pb.andrejkijas.hw9;
 
-import java.io.FileInputStream;
-import java.io.FileWriter;
-import java.io.InputStream;
-import java.io.Writer;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.List;
+import java.io.*;
 import java.util.Random;
-
-//import java.nio.file.Paths;
+import java.util.stream.Collectors;
 
 /**
  * В пакете hw9 создать класс FileNumbers.
@@ -29,104 +20,44 @@ import java.util.Random;
  * **/
 
 public class FileNumbers {
-    public static void main(String[] args) throws Exception{
+    private static final String FILE_NAME = "files09/numbers.txt";
+    private static final String NEW_FILE_NAME = "files09/odd-numbers.txt";
 
-
-        System.out.println("--------------------------------------------------");
+    public static void main(String[] args) {
+        System.out.println("\n--------------------------------------------------");
         createNumbersFile();
-        System.out.println("--------------------------------------------------");
+        System.out.println("\nСоздан файл \"numbers.txt\"");
+        System.out.println("\n--------------------------------------------------");
+        System.out.println("\nТак выглядит файл \"numbers.txt\" изнутри:\n");
         printCreatedFile();
-        System.out.println("--------------------------------------------------");
-        System.out.println("Тута будит - createOddNumbersFile()");
-        createOddNumbersFile();
-        System.out.println("--------------------------------------------------");
-
-
-
-
-
-
-        Path path = Paths.get("files09/numbers.txt");
-        // чтение всех строк файла
-        List<String> lines = Files.readAllLines(path, StandardCharsets.UTF_8);
-        for (String s: lines) {
-            System.out.println(s);
-        }
-
-
-
-
-
-//        Path path = Paths.get("files09/numbers.txt");
-//
-//        try (Scanner scan = new Scanner(path)) {
-//            int[] arrayC = new int[100];
-//            int in;
-//
-//            String str = scan.nextLine();
-//
-//            while (true) {
-//                in = Integer.parseInt(str);
-//                if (in % 2 == 0){
-//                    in = 0;
-//                }
-//                String b = String.valueOf(in);
-//
-//
-//                System.out.println(b);
-//            }
-//
-//
-//        } catch (NoSuchElementException ex) {
-//            System.out.println("Файл прочитан");
-//        } catch (IOException ex) {
-////            ex.printStackTrace();
-//            System.out.println("Файл не найден");
-//        }
-
-
-
-
-
-
+        System.out.println("\n--------------------------------------------------");
+        System.out.println("\nТак выглядит файл \"odd-numbers.txt\" изнутри:\n");
+        createOddNumbersFile(FILE_NAME);
+        System.out.println("\n--------------------------------------------------");
     }
 
-
-
-
-
-
-
-
-
-
-    private static void createNumbersFile(){
-        int[] arrayR = new int[100];
-        Random random = new Random();
-        for (int i = 0; i < arrayR.length; i++) {
-            arrayR[i] = 0 + random.nextInt(99 - 0 + 1);
-        }
-        try (Writer writer = new FileWriter("files09/numbers.txt")) {
-            for (int j = 0; j <= arrayR.length+1; j++) {
-                if ((j) % 10 == 0) {
-                    if(j == 0){
-                        writer.write(arrayR[j] + " ");
-                    } else {
-                        writer.write(arrayR[j] + " \n");
-                    }
-                } else {
-                    writer.write(arrayR[j] + " ");
+    public static void createNumbersFile() {
+        try (FileWriter writer = new FileWriter(FILE_NAME, false)) {
+            StringBuilder sb = new StringBuilder();
+            Random random = new Random();
+            for (int i = 1; i < 100; i++) {
+                int j = 0 + random.nextInt(99 - 0 + 1);
+                String textVal = String.format("%-3d", j);
+                sb.append(textVal);
+                if (i % 10 == 0) {
+                    sb.append("\n");
                 }
             }
-        } catch (Exception e) {
-            e.getStackTrace();
+            writer.write(sb.toString());
+            writer.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-        System.out.println("Данные созданы и записаны в файл \"numbers.txt\"");
+
     }
 
     private static void printCreatedFile(){
         try (InputStream is = new FileInputStream("files09/numbers.txt")) {
-            System.out.println("Так выглядит файл \"numbers.txt\" изнутри:\n");
             int available = is.available();
             byte[] arrayR = new byte[available];
             int i = 0;
@@ -143,7 +74,51 @@ public class FileNumbers {
         }
     }
 
-    private static void createOddNumbersFile(){
-        // Надо как-то вычитать файл и подставить вместо четных значений нолики
+    public static void createOddNumbersFile(String fileName) {
+        String textFromFile = "";
+        try (BufferedReader reader = new BufferedReader(new FileReader(FILE_NAME))) {
+            textFromFile = reader.lines()
+                    .map(n -> checkAndReplaceOddNum(n))
+                    .collect(Collectors.joining("\n"));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        writeOggNumbToFile(textFromFile);
+        System.out.println(textFromFile);
+    }
+
+    private static void writeOggNumbToFile(String textFromFile) {
+        try (FileWriter writer = new FileWriter(NEW_FILE_NAME, false)) {
+            writer.write(textFromFile);
+            writer.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private static String checkAndReplaceOddNum(String strNum) {
+        String[] arrNumb = strNum.split(" ");
+        StringBuilder sb = new StringBuilder();
+        String textVal = "";
+        try {
+            final int size = arrNumb.length;
+            for (int i = 0; i < size; i++) {
+                if (arrNumb[i].length() > 0) {
+                    int number = Integer.parseInt(arrNumb[i]);
+                    if (number % 2 == 0) {
+                        number = 0;
+                        textVal = String.format("%-3d", number);
+                    } else {
+                        textVal = String.format("%-3d", number);
+                    }
+                    sb.append(textVal);
+                }
+            }
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+        }
+        return sb.toString();
     }
 }
