@@ -2,8 +2,8 @@ package com.pb.andrejkijas.hw10;
 
 import java.lang.reflect.Array;
 import java.util.Arrays;
+
 //import java.util.Objects;
-import static jdk.nashorn.internal.objects.NativeString.indexOf;
 
 /**
  * Создать пакет hw10.
@@ -36,14 +36,14 @@ public class NumBox<T extends Number> {
     public void add(T num) {
         final int index = size;
 //        Objects.checkIndex(index, arr.length);
-        indexOf(index, arr.length);
+//        indexOf(index, arr.length);
         arr[index] = num;
         size++;
     }
 
     public T get(int index) {
 //        Objects.checkIndex(index, arr.length);
-        indexOf(index, arr.length);
+//        indexOf(index, arr.length);
         return arr[index];
     }
 
