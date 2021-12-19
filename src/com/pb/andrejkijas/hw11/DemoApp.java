@@ -58,5 +58,6 @@ public class DemoApp {
 
         System.out.println("-- Получаем данные из файла");
         Phonebook.loadAllFromFile();
+
     }
 }
