@@ -53,7 +53,7 @@ class ClientWindowWork extends JFrame {
         setBounds(700, 200, 400, 350);
         setTitle("Окно клиентской части");
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        textArea = new JTextArea();
+        textArea = new JTextArea("---- Для начала чата введите Ваше имя и нажмите \"Отправить\" ----\n");
         textArea.setEditable(false);
         JScrollPane jsp = new JScrollPane(textArea);
         add(jsp, BorderLayout.CENTER);
